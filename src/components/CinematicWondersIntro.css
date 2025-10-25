@@ -1,0 +1,223 @@
+.cinematic-intro-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10000;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fefcf9 0%, #f5f1eb 50%, #faf8f5 100%);
+}
+
+/* Cosmic Background */
+.cosmic-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(135deg, #fefcf9 0%, #f5f1eb 50%, #faf8f5 100%);
+}
+
+.stars-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20% 30%, #D4AF37, transparent),
+    radial-gradient(2px 2px at 60% 70%, #CD7F32, transparent),
+    radial-gradient(1px 1px at 50% 50%, #D4AF37, transparent),
+    radial-gradient(1px 1px at 80% 10%, #CD7F32, transparent),
+    radial-gradient(2px 2px at 90% 60%, #D4AF37, transparent),
+    radial-gradient(1px 1px at 33% 80%, #CD7F32, transparent),
+    radial-gradient(1px 1px at 15% 90%, #D4AF37, transparent);
+  background-size: 200% 200%;
+  background-position: 
+    0% 0%, 
+    40% 60%, 
+    130% 270%, 
+    70% 100%,
+    200% 150%,
+    250% 200%,
+    80% 180%;
+  animation: twinkle 8s ease-in-out infinite;
+  opacity: 0.3;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+.smoke-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(ellipse at 30% 40%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 60%, rgba(205, 127, 50, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(212, 114, 91, 0.05) 0%, transparent 50%);
+  animation: driftSmoke 20s ease-in-out infinite;
+}
+
+@keyframes driftSmoke {
+  0%, 100% { 
+    transform: translate(0, 0) scale(1);
+    opacity: 0.3;
+  }
+  50% { 
+    transform: translate(20px, -15px) scale(1.05);
+    opacity: 0.5;
+  }
+}
+
+/* Monument Grid */
+.monuments-grid {
+  position: absolute;
+  width: 90%;
+  height: 80%;
+  top: 10%;
+  left: 5%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 2rem;
+  perspective: 1000px;
+}
+
+.monument-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.monument-item.illuminated {
+  filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.6));
+}
+
+.monument-item.dim {
+  filter: drop-shadow(0 0 5px rgba(100, 100, 100, 0.2));
+}
+
+.monument-svg {
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.1));
+}
+
+.monument-item.illuminated .monument-svg {
+  filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.8));
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.6));
+  }
+  50% {
+    filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.9));
+  }
+}
+
+.monument-label {
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #704214;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Georgia', serif;
+  text-align: center;
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+}
+
+.monument-item.dim .monument-label {
+  color: #8B3A3A;
+  text-shadow: none;
+  opacity: 0.5;
+}
+
+/* Central Title */
+.intro-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.intro-title h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 800;
+  color: #704214;
+  font-family: 'Georgia', serif;
+  letter-spacing: 3px;
+  text-shadow: 
+    0 0 20px rgba(212, 175, 55, 0.4),
+    0 0 40px rgba(212, 175, 55, 0.2),
+    2px 2px 4px rgba(139, 58, 58, 0.3);
+  margin: 0;
+}
+
+.intro-title p {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  color: #5C3317;
+  font-style: italic;
+  font-family: 'Georgia', serif;
+  margin-top: 1rem;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+/* Fade Overlay */
+.fade-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #fefcf9 0%, #f5f1eb 50%, #faf8f5 100%);
+  pointer-events: none;
+  z-index: 200;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .monuments-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .monuments-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: 1rem;
+    width: 95%;
+    left: 2.5%;
+  }
+
+  .monument-svg {
+    max-width: 120px;
+  }
+
+  .monument-label {
+    font-size: 0.65rem;
+  }
+
+  .intro-title h1 {
+    font-size: 2rem;
+  }
+
+  .intro-title p {
+    font-size: 0.9rem;
+  }
+}

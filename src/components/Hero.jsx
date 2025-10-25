@@ -10,6 +10,7 @@ const HeroArch3D = lazy(() => import('./HeroArch3D'));
 
 const Hero = () => {
   const [scrollY, setScrollY] = useState(0);
+  const [currentHash, setCurrentHash] = useState(window.location.hash || '#home');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,10 +21,29 @@ const Hero = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const onHash = () => setCurrentHash(window.location.hash || '#home');
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, []);
+
   const parallaxOffset = scrollY * 0.5;
 
+  const goHash = (h) => {
+    window.location.hash = h;
+  };
+
   return (
-    <div className="hero-container">
+    <div id="home" className="hero-container">
+      {/* Top Navbar */}
+      <nav className="hero-nav" aria-label="Primary navigation">
+        <div className="hero-nav-inner">
+          <button className={`nav-item ${currentHash === '#home' || currentHash === '' ? 'active' : ''}`} onClick={() => goHash('#home')}>Home</button>
+          <button className={`nav-item ${currentHash === '#retroscroll' ? 'active' : ''}`} onClick={() => goHash('#retroscroll')}>Story</button>
+          <button className={`nav-item ${currentHash === '#ticket' ? 'active' : ''}`} onClick={() => goHash('#ticket')}>Tickets</button>
+          <button className={`nav-item ${currentHash === '#artisans' ? 'active' : ''}`} onClick={() => goHash('#artisans')}>Artisans</button>
+        </div>
+      </nav>
       {/* Light Rays Effect */}
       <div style={{ 
         position: 'absolute', 

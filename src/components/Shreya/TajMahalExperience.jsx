@@ -12,7 +12,38 @@ export default function TajMahalExperience() {
   ];
 
   const [visibleCards, setVisibleCards] = useState([]);
+  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const timelineRef = useRef(null);
+  const audioRef = useRef(null);
+
+  // Initialize birds chirping audio
+  useEffect(() => {
+    // Create audio element for birds chirping
+    audioRef.current = new Audio('/audio/birds-chirping.mp3');
+    audioRef.current.loop = true;
+    audioRef.current.volume = 0.3;
+
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
+  }, []);
+
+  const toggleAudio = () => {
+    if (!audioRef.current) return;
+
+    if (isAudioPlaying) {
+      audioRef.current.pause();
+      setIsAudioPlaying(false);
+    } else {
+      audioRef.current.play().catch(err => {
+        console.log('Audio playback failed:', err);
+      });
+      setIsAudioPlaying(true);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,9 +86,75 @@ export default function TajMahalExperience() {
 
   return (
     <MouseAwakening>
-      <div className="experience-wrapper">
+      <div id="retroscroll" className="experience-wrapper">
+        {/* Background Video */}
+        <div className="background-video-container">
+          <video
+            className="background-video"
+            autoPlay
+            muted
+            loop
+            playsInline
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              opacity: 0.15,
+              zIndex: 0,
+              filter: 'sepia(0.3) brightness(0.8)'
+            }}
+          >
+            <source src="/video/taj-mahal-video.mp4" type="video/mp4" />
+            <source src="/src/video/videoplayback.mp4" type="video/mp4" />
+          </video>
+          <div style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            background: 'rgba(255, 248, 231, 0.7)',
+            zIndex: 1,
+            pointerEvents: 'none'
+          }} />
+        </div>
+
+        {/* Audio Control Button */}
+        <button
+          onClick={toggleAudio}
+          className="audio-control-btn"
+          style={{
+            position: 'fixed',
+            bottom: '2rem',
+            left: '2rem',
+            zIndex: 1000,
+            width: '56px',
+            height: '56px',
+            borderRadius: '50%',
+            background: isAudioPlaying 
+              ? 'linear-gradient(135deg, #D4AF37, #CD7F32)'
+              : 'linear-gradient(135deg, rgba(139, 58, 58, 0.9), rgba(92, 51, 23, 0.9))',
+            border: '3px solid var(--vintage-gold)',
+            color: 'var(--vintage-cream)',
+            fontSize: '1.5rem',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: '0 8px 30px rgba(0,0,0,0.35)',
+            transition: 'all 0.3s ease'
+          }}
+          aria-label={isAudioPlaying ? 'Pause birds chirping' : 'Play birds chirping'}
+          title={isAudioPlaying ? 'Pause ambient sounds' : 'Play ambient sounds'}
+        >
+          {isAudioPlaying ? '🔊' : '🔇'}
+        </button>
+
         {/* Navigation Header */}
-      <header className="experience-header">
+      <header className="experience-header" style={{ position: 'relative', zIndex: 10 }}>
         <div className="header-content">
           <h1 className="site-title">Taj Mahal</h1>
           <nav className="header-nav">
@@ -70,7 +167,7 @@ export default function TajMahalExperience() {
       </header>
 
       {/* Main Content */}
-      <main className="experience-main">
+      <main className="experience-main" style={{ position: 'relative', zIndex: 10 }}>
         <RetroScroll story={story} onComplete={handleComplete} />
         
         {/* Timeline Section */}

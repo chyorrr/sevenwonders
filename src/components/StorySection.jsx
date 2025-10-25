@@ -14,7 +14,7 @@ const StorySection = () => {
   const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [100, 0, 0, -100]);
 
   return (
-    <section ref={containerRef} className="story-section">
+    <section id="story" ref={containerRef} className="story-section">
       <motion.div 
         className="story-content"
         style={{ opacity, scale, y }}
