@@ -1,0 +1,630 @@
+/* Artisans Page Styles */
+
+.artisans-page-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, rgba(255, 248, 231, 0.4) 0%, rgba(245, 237, 214, 0.4) 50%, rgba(232, 212, 184, 0.3) 100%);
+  position: relative;
+  transition: background 0.6s ease;
+  overflow: hidden;
+}
+
+.artisans-page-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(ellipse at 10% 20%, rgba(212, 175, 55, 0.2) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 80%, rgba(139, 58, 58, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(232, 212, 184, 0.25) 0%, transparent 60%);
+  animation: artisanGradient 25s ease-in-out infinite;
+  z-index: 0;
+}
+
+.artisans-page-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml,%3Csvg width="100" height="100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M10 10 L20 20 M30 10 L40 20 M50 10 L60 20 M70 10 L80 20" stroke="rgba(212,175,55,0.05)" stroke-width="0.5"%3E%3C/path%3E%3C/svg%3E');
+  animation: patternMove 60s linear infinite;
+  opacity: 0.3;
+  z-index: 0;
+}
+
+/* Floating Particles Layer */
+.artisans-page-wrapper > *:first-child::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(circle, rgba(212, 175, 55, 0.5) 1.5px, transparent 1.5px),
+    radial-gradient(circle, rgba(232, 212, 184, 0.4) 1px, transparent 1px),
+    radial-gradient(circle, rgba(139, 58, 58, 0.3) 1px, transparent 1px),
+    radial-gradient(circle, rgba(212, 175, 55, 0.2) 2px, transparent 2px);
+  background-size: 70px 70px, 110px 110px, 90px 90px, 150px 150px;
+  background-position: 0 0, 30px 30px, 50px 50px, 20px 80px;
+  animation: artisanParticles 80s linear infinite;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+@keyframes artisanParticles {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-150px) translateX(100px) rotate(360deg);
+  }
+}
+
+@keyframes artisanGradient {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+    opacity: 0.5;
+  }
+  33% {
+    transform: translate(-30px, 40px) rotate(5deg) scale(1.1);
+    opacity: 0.7;
+  }
+  66% {
+    transform: translate(40px, -30px) rotate(-5deg) scale(1.05);
+    opacity: 0.6;
+  }
+}
+
+@keyframes patternMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(100px, 100px);
+  }
+}
+
+/* Header */
+.artisans-header {
+  background: rgba(255, 248, 231, 0.5);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+  box-shadow: 0 2px 10px rgba(112, 66, 20, 0.03);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: all 0.4s ease;
+}
+
+.artisans-header .header-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.artisans-header .site-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.6rem;
+  color: #704214;
+  margin: 0;
+  text-shadow: 1px 1px 2px rgba(212, 175, 55, 0.2);
+  letter-spacing: 3px;
+  font-weight: 400;
+}
+
+.artisans-header .header-nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.artisans-header .nav-link {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  padding: 0.6rem 1.2rem;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  color: #704214;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  position: relative;
+  opacity: 0.75;
+}
+
+.artisans-header .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 1px;
+  background: #D4AF37;
+  transition: width 0.3s ease;
+}
+
+.artisans-header .nav-link:hover {
+  opacity: 1;
+  color: #8B3A3A;
+}
+
+.artisans-header .nav-link:hover::after {
+  width: 70%;
+}
+
+.artisans-header .nav-link.active {
+  opacity: 1;
+  color: #8B3A3A;
+  font-weight: 600;
+}
+
+.artisans-header .nav-link.active::after {
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+}
+
+/* Hero Section */
+.artisans-hero {
+  background: linear-gradient(135deg, #704214 0%, #8B3A3A 50%, #5C3317 100%);
+  padding: 3rem 2rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.artisans-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(205, 127, 50, 0.2) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.artisans-hero .hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.artisans-hero .hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: #FFFFF0;
+  margin: 0 0 1rem 0;
+  font-weight: 700;
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(212, 175, 55, 0.5);
+  letter-spacing: 2px;
+}
+
+.artisans-hero .hero-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  color: #E8D4B8;
+  margin: 0;
+  font-style: italic;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Main Content */
+.artisans-main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Section Headers */
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  color: #704214;
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+  text-shadow: 1px 1px 3px rgba(212, 175, 55, 0.2);
+}
+
+.section-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  color: #8B3A3A;
+  font-style: italic;
+  margin: 0;
+}
+
+/* ==================== BLUEPRINT SECTION ==================== */
+.blueprint-section {
+  margin-bottom: 5rem;
+}
+
+.blueprint-container {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  background: #1a1f2e;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.3),
+    inset 0 0 50px rgba(212, 175, 55, 0.1);
+  border: 2px solid #2a3f5f;
+}
+
+.blueprint-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.blueprint-hotspot {
+  transition: all 0.3s ease;
+}
+
+.blueprint-hotspot:hover {
+  stroke-width: 4;
+}
+
+.glow-pulse {
+  animation: blueprintGlow 1.5s ease-in-out infinite;
+}
+
+@keyframes blueprintGlow {
+  0%, 100% {
+    opacity: 0.4;
+    stroke-width: 2;
+  }
+  50% {
+    opacity: 1;
+    stroke-width: 4;
+  }
+}
+
+.blueprint-fact-bubble {
+  position: absolute;
+  top: 50%;
+  right: -320px;
+  transform: translateY(-50%);
+  width: 300px;
+  background: linear-gradient(135deg, rgba(255, 255, 240, 0.98), rgba(232, 212, 184, 0.98));
+  border: 2px solid #D4AF37;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 25px rgba(112, 66, 20, 0.3);
+  animation: fadeInRight 0.4s ease;
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+.blueprint-fact-bubble h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.3rem;
+  color: #704214;
+  margin: 0 0 1rem 0;
+  border-bottom: 2px solid #D4AF37;
+  padding-bottom: 0.5rem;
+}
+
+.blueprint-fact-bubble p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  color: #5C3317;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ==================== ARTISAN GRID (was scroll) ==================== */
+.artisan-scroll-section {
+  margin-bottom: 5rem;
+}
+
+.artisan-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+  padding: 2rem 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.artisan-card {
+  background: linear-gradient(135deg, rgba(255, 255, 240, 0.95), rgba(232, 212, 184, 0.95));
+  border: 2px solid rgba(212, 175, 55, 0.4);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 8px 25px rgba(112, 66, 20, 0.15);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.artisan-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+  transition: transform 0.6s ease;
+}
+
+.artisan-card:hover::before {
+  transform: rotate(180deg);
+}
+
+.artisan-icon {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  filter: drop-shadow(2px 2px 4px rgba(112, 66, 20, 0.2));
+  display: inline-block;
+  width: 100%;
+}
+
+.artisan-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: #704214;
+  margin: 0 0 0.5rem 0;
+  text-align: center;
+  font-weight: 700;
+}
+
+.artisan-role {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  color: #8B3A3A;
+  text-align: center;
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.artisan-origin {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  color: #704214;
+  text-align: center;
+  margin: 0 0 1rem 0;
+  opacity: 0.8;
+}
+
+.artisan-contribution {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  color: #5C3317;
+  line-height: 1.6;
+  margin: 0 0 1.5rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+.artisan-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #8B3A3A;
+  border-left: 3px solid #D4AF37;
+  padding-left: 1rem;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* ==================== SHIFTING LIGHT ==================== */
+.shifting-light-section {
+  margin-bottom: 5rem;
+}
+
+.time-slider-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.taj-image-container {
+  border-radius: 16px;
+  padding: 3rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  margin-bottom: 2rem;
+  position: relative;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.taj-silhouette {
+  width: 100%;
+  max-width: 500px;
+  transition: filter 0.5s ease;
+}
+
+.taj-svg {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+}
+
+.time-label {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-family: 'Cinzel', serif;
+  font-size: 1.8rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+/* ==================== INLAY MAGNIFICATION ==================== */
+.inlay-section {
+  margin-bottom: 3rem;
+}
+
+.inlay-container {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  cursor: crosshair;
+}
+
+.arch-image {
+  background: #E8D4B8;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 8px 30px rgba(112, 66, 20, 0.2);
+  border: 3px solid #D4AF37;
+}
+
+.arch-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.zoom-lens {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border: 3px solid #D4AF37;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+  box-shadow: 
+    0 0 20px rgba(212, 175, 55, 0.6),
+    inset 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.zoom-detail {
+  position: absolute;
+  top: 130px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, rgba(255, 255, 240, 0.98), rgba(232, 212, 184, 0.98));
+  border: 2px solid #D4AF37;
+  border-radius: 12px;
+  padding: 1rem;
+  min-width: 200px;
+  box-shadow: 0 8px 25px rgba(112, 66, 20, 0.3);
+}
+
+.detail-pattern {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  color: #5C3317;
+  line-height: 1.8;
+  text-align: left;
+}
+
+.inlay-info {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.inlay-info p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  color: #704214;
+  line-height: 1.7;
+  font-style: italic;
+}
+
+/* Footer */
+.artisans-footer {
+  background: rgba(112, 66, 20, 0.05);
+  border-top: 1px solid rgba(212, 175, 55, 0.3);
+  padding: 2rem;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.artisans-footer p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: #704214;
+  margin: 0;
+  opacity: 0.8;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .blueprint-fact-bubble {
+    position: static;
+    transform: none;
+    margin-top: 2rem;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .artisans-hero .hero-title {
+    font-size: 2rem;
+  }
+
+  .artisans-hero .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .blueprint-container {
+    padding: 1rem;
+  }
+
+  .artisan-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 1rem;
+  }
+
+  .artisan-card {
+    padding: 1.5rem;
+  }
+
+  .time-label {
+    font-size: 1.3rem;
+  }
+}
