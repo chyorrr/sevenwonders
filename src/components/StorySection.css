@@ -1,0 +1,220 @@
+.story-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem;
+  background: linear-gradient(180deg, 
+    rgba(44, 62, 80, 0.95) 0%, 
+    rgba(92, 51, 23, 0.95) 50%,
+    rgba(44, 62, 80, 0.95) 100%
+  );
+  backdrop-filter: blur(20px);
+  overflow: hidden;
+}
+
+.story-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  z-index: 2;
+  position: relative;
+}
+
+.story-quote {
+  position: relative;
+  text-align: center;
+  margin-bottom: 6rem;
+  padding: 3rem 2rem;
+}
+
+.quote-mark {
+  font-size: 8rem;
+  font-family: 'Georgia', serif;
+  color: var(--vintage-gold);
+  opacity: 0.3;
+  line-height: 1;
+  font-weight: bold;
+}
+
+.quote-mark.opening {
+  position: absolute;
+  top: -2rem;
+  left: -1rem;
+}
+
+.quote-mark.closing {
+  position: absolute;
+  bottom: -4rem;
+  right: -1rem;
+}
+
+.quote-text {
+  font-size: clamp(1.3rem, 3vw, 2rem);
+  line-height: 1.8;
+  color: var(--vintage-cream);
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  max-width: 900px;
+  margin: 0 auto;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.story-timeline {
+  position: relative;
+  padding: 4rem 0;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, 
+    transparent 0%, 
+    var(--vintage-gold) 10%,
+    var(--vintage-bronze) 50%,
+    var(--vintage-gold) 90%,
+    transparent 100%
+  );
+  transform: translateX(-50%);
+}
+
+.timeline-items {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+}
+
+.timeline-item:nth-child(odd) {
+  flex-direction: row;
+  padding-left: calc(50% + 3rem);
+}
+
+.timeline-item:nth-child(even) {
+  flex-direction: row-reverse;
+  padding-right: calc(50% + 3rem);
+}
+
+.timeline-icon {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, var(--vintage-gold), var(--vintage-bronze));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+  border: 4px solid var(--vintage-navy);
+  z-index: 2;
+}
+
+.timeline-content {
+  background: linear-gradient(135deg, 
+    rgba(255, 248, 231, 0.1) 0%, 
+    rgba(232, 212, 184, 0.15) 100%
+  );
+  padding: 1.5rem 2rem;
+  border-radius: 15px;
+  border: 2px solid var(--vintage-gold);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease;
+}
+
+.timeline-content:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+  border-color: var(--vintage-bronze);
+}
+
+.timeline-era {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--vintage-gold);
+  font-family: 'Georgia', serif;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-event {
+  font-size: 1.1rem;
+  color: var(--vintage-cream);
+  line-height: 1.6;
+}
+
+/* Decorative animated circles */
+.story-decorations {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.decoration-circle,
+.decoration-circle-2 {
+  position: absolute;
+  border: 2px solid var(--vintage-gold);
+  border-radius: 50%;
+  opacity: 0.05;
+}
+
+.decoration-circle {
+  width: 400px;
+  height: 400px;
+  top: 10%;
+  left: -10%;
+}
+
+.decoration-circle-2 {
+  width: 500px;
+  height: 500px;
+  bottom: 10%;
+  right: -15%;
+  border-color: var(--vintage-bronze);
+}
+
+@media (max-width: 968px) {
+  .timeline-item:nth-child(odd),
+  .timeline-item:nth-child(even) {
+    flex-direction: column;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+  }
+
+  .timeline-line {
+    display: none;
+  }
+
+  .timeline-icon {
+    position: relative;
+    left: auto;
+    transform: none;
+    margin-bottom: 1rem;
+  }
+
+  .quote-mark {
+    font-size: 4rem;
+  }
+
+  .quote-mark.opening {
+    left: 0;
+  }
+
+  .quote-mark.closing {
+    right: 0;
+  }
+}

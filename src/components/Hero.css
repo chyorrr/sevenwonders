@@ -1,0 +1,202 @@
+.hero-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 900px;
+  padding: 2rem;
+  background: radial-gradient(ellipse at center, rgba(255, 248, 231, 0.5) 0%, transparent 70%);
+  border-radius: 30px;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 800;
+  color: var(--vintage-sepia);
+  margin: 0;
+  line-height: 1.1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: 'Georgia', serif;
+  letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+  display: block;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 400;
+  color: var(--vintage-burgundy);
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+.hero-description {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: var(--vintage-mahogany);
+  margin: 2rem auto;
+  max-width: 600px;
+  line-height: 1.8;
+  opacity: 0.9;
+  font-family: 'Georgia', serif;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+
+.cta-button {
+  position: relative;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.button-icon {
+  font-size: 1.2rem;
+}
+
+.cta-button.primary {
+  background: linear-gradient(135deg, var(--vintage-gold) 0%, var(--vintage-bronze) 100%);
+  color: var(--vintage-cream);
+  border: 2px solid var(--vintage-gold);
+}
+
+.cta-button.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(212, 175, 55, 0.4);
+}
+
+.cta-button.secondary {
+  background: transparent;
+  color: var(--vintage-sepia);
+  border: 2px solid var(--vintage-terracotta);
+}
+
+.cta-button.secondary:hover {
+  background: var(--vintage-terracotta);
+  color: var(--vintage-cream);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(212, 114, 91, 0.3);
+}
+
+.button-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.cta-button:hover .button-shine {
+  left: 100%;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--vintage-bronze);
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.scroll-arrow {
+  font-size: 1.5rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+.decorative-corner {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-color: var(--vintage-gold);
+  opacity: 0.4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 15;
+}
+
+.corner-icon {
+  font-size: 3rem;
+  color: var(--vintage-gold);
+  opacity: 0.6;
+}
+
+.decorative-corner.top-left {
+  top: 2rem;
+  left: 2rem;
+  border-top: 3px solid var(--vintage-gold);
+  border-left: 3px solid var(--vintage-gold);
+}
+
+.decorative-corner.top-right {
+  top: 2rem;
+  right: 2rem;
+  border-top: 3px solid var(--vintage-gold);
+  border-right: 3px solid var(--vintage-gold);
+}
+
+.decorative-corner.bottom-left {
+  bottom: 2rem;
+  left: 2rem;
+  border-bottom: 3px solid var(--vintage-gold);
+  border-left: 3px solid var(--vintage-gold);
+}
+
+.decorative-corner.bottom-right {
+  bottom: 2rem;
+  right: 2rem;
+  border-bottom: 3px solid var(--vintage-gold);
+  border-right: 3px solid var(--vintage-gold);
+}
+
+@media (max-width: 768px) {
+  .hero-cta {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .decorative-corner {
+    width: 80px;
+    height: 80px;
+  }
+}

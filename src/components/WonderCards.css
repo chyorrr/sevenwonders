@@ -1,0 +1,238 @@
+.wonder-cards-section {
+  position: relative;
+  padding: 8rem 2rem;
+  background: 
+    radial-gradient(ellipse at 30% 30%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 70%, rgba(205, 127, 50, 0.15) 0%, transparent 50%),
+    linear-gradient(180deg, 
+      rgba(255, 248, 231, 0.8) 0%, 
+      rgba(232, 212, 184, 0.6) 50%, 
+      rgba(255, 248, 231, 0.8) 100%
+    );
+  backdrop-filter: blur(1px);
+}
+
+.wonder-cards-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 80px,
+      rgba(212, 175, 55, 0.05) 80px,
+      rgba(212, 175, 55, 0.05) 81px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 80px,
+      rgba(205, 127, 50, 0.04) 80px,
+      rgba(205, 127, 50, 0.04) 81px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wonder-cards-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.section-icon {
+  font-size: 5rem;
+  color: var(--vintage-gold);
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+
+.section-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  color: var(--vintage-sepia);
+  margin: 0;
+  font-family: 'Georgia', serif;
+  letter-spacing: -0.01em;
+}
+
+.section-subtitle {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: var(--vintage-burgundy);
+  margin-top: 1rem;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.wonder-card {
+  position: relative;
+  height: 100%;
+}
+
+.card-inner {
+  position: relative;
+  background: linear-gradient(135deg, 
+    var(--vintage-cream) 0%, 
+    var(--vintage-ivory) 100%
+  );
+  border: 2px solid var(--vintage-sand);
+  border-radius: 15px;
+  padding: 2.5rem 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 
+    0 10px 30px rgba(112, 66, 20, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+.card-inner:hover {
+  transform: translateY(-10px);
+  box-shadow: 
+    0 20px 50px rgba(112, 66, 20, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  border-color: var(--vintage-gold);
+}
+
+.card-ornament {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border: 2px solid var(--vintage-gold);
+  opacity: 0.3;
+}
+
+.card-ornament.top {
+  top: 1rem;
+  left: 1rem;
+  border-bottom: none;
+  border-right: none;
+}
+
+.card-ornament.bottom {
+  bottom: 1rem;
+  right: 1rem;
+  border-top: none;
+  border-left: none;
+}
+
+.card-number {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 3rem;
+  font-weight: 800;
+  opacity: 0.15;
+  font-family: 'Georgia', serif;
+}
+
+.card-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--vintage-sepia);
+  margin: 0 0 0.5rem 0;
+  font-family: 'Georgia', serif;
+  position: relative;
+  z-index: 1;
+}
+
+.card-location {
+  font-size: 1rem;
+  color: var(--vintage-terracotta);
+  margin: 0 0 1.5rem 0;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-icon {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.card-description {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--vintage-mahogany);
+  margin: 0 0 1.5rem 0;
+  flex-grow: 1;
+  opacity: 0.85;
+}
+
+.card-year {
+  font-size: 0.9rem;
+  color: var(--vintage-bronze);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(212, 114, 91, 0.1);
+  border-left: 3px solid var(--vintage-bronze);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-button {
+  padding: 0.8rem 2rem;
+  background: linear-gradient(135deg, var(--vintage-burgundy) 0%, var(--vintage-terracotta) 100%);
+  color: var(--vintage-cream);
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(139, 58, 58, 0.2);
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.button-arrow {
+  font-size: 0.9rem;
+  transition: transform 0.3s ease;
+}
+
+.card-button:hover .button-arrow {
+  transform: translateX(5px);
+}
+
+.card-button:hover {
+  box-shadow: 0 6px 25px rgba(139, 58, 58, 0.4);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .wonder-cards-section {
+    padding: 4rem 1rem;
+  }
+
+  .section-header {
+    margin-bottom: 3rem;
+  }
+
+  .cards-grid {
+    gap: 2rem;
+  }
+}
